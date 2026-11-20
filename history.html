@@ -104,10 +104,13 @@
       <div class="wrap">
         <!-- filled and shown by the script at the bottom; hidden without JavaScript -->
         <form class="tl-filter" aria-label="Filter timeline" hidden>
+          <!-- phones only: the selects stay folded behind this button and apply on "Apply" -->
+          <button type="button" class="tl-filter-toggle" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Filter<span class="tl-filter-n"></span></button>
           <label>Year <select name="year"><option value="">All</option></select></label>
           <label>Month <select name="month"><option value="">All</option></select></label>
           <label>Day <select name="day"><option value="">All</option></select></label>
           <button type="reset">Reset</button>
+          <button type="submit" class="tl-apply">Apply</button>
           <p class="tl-count" role="status"></p>
         </form>
 
@@ -447,8 +450,22 @@
       wide.addEventListener('change', schedule);
       document.fonts.ready.then(() => pack(true)); // web fonts change text heights: decide the sides again once loaded
 
+      // Phones: the filter folds behind a button; picks only take effect on "Apply" (wider screens apply on change).
+      const phone = matchMedia('(max-width: 600px)'); // keep in sync with the 600px media query in about.css
+      const toggle = form.querySelector('.tl-filter-toggle');
+      const KEYS = ['year', 'month', 'day'];
+      let applied = KEYS.map(() => '');
+      const setOpen = (open) => {
+        form.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open);
+      };
+
       const apply = () => {
-        const [year, month, day] = ['year', 'month', 'day'].map((k) => Number(form.elements[k].value));
+        applied = KEYS.map((k) => form.elements[k].value);
+        const active = applied.filter(Boolean).length;
+        toggle.querySelector('.tl-filter-n').textContent = active || '';
+        toggle.classList.toggle('is-active', active > 0);
+        const [year, month, day] = applied.map(Number);
         let shown = 0;
         items.forEach((li, i) => {
           const { y, m, d, end } = dates[i];
@@ -558,8 +575,25 @@
         opener?.focus(); // Safari doesn't focus buttons on click, so restore it ourselves
       });
 
-      form.addEventListener('change', apply);
-      form.addEventListener('reset', () => setTimeout(apply)); // values reset after the event
+      form.addEventListener('change', () => { if (!phone.matches) apply(); });
+      form.addEventListener('reset', () => { if (!phone.matches) setTimeout(apply); }); // values reset after the event
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        apply();
+        setOpen(false);
+        toggle.focus();
+      });
+      toggle.addEventListener('click', () => {
+        const open = !form.classList.contains('is-open');
+        // closing without "Apply" drops the unapplied picks, so the selects match what the timeline shows
+        if (!open) KEYS.forEach((k, i) => { form.elements[k].value = applied[i]; });
+        setOpen(open);
+        if (open) form.elements.year.focus();
+      });
+      phone.addEventListener('change', () => { setOpen(false); apply(); }); // leaving phone width: show pending picks live
+      form.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && form.classList.contains('is-open')) { toggle.click(); toggle.focus(); }
+      });
       form.hidden = false;
       list.classList.add('is-split');
       apply();

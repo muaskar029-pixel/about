@@ -530,6 +530,23 @@ p { margin: 0; text-wrap: balance; }
 
 .tl-count { margin-left: auto; font: 500 0.875rem/1 var(--font-mono); color: var(--muted); }
 
+/* phone-only controls (shown in the 600px query below) */
+.tl-filter-toggle, .tl-apply { display: none; }
+.tl-filter .tl-filter-toggle { align-items: center; gap: 0.5rem; }
+.tl-filter .tl-filter-toggle.is-active { border-color: var(--red); color: var(--red); }
+.tl-filter-n:not(:empty) {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.375rem;
+  height: 1.375rem;
+  padding: 0 0.375rem;
+  border-radius: 999px;
+  background: var(--red-gradient);
+  color: var(--white);
+  font: 600 0.75rem/1 var(--font-body);
+}
+.tl-filter .tl-apply { border-color: transparent; background: var(--red-gradient); color: var(--white); font-weight: 600; }
+
 /* Wide screens (with JS): two interlocking columns around a centre line.
    The script measures every card and sets its top and the list height (see pack() in history.html);
    keep this breakpoint in sync with the matchMedia there. */
@@ -826,11 +843,14 @@ p { margin: 0; text-wrap: balance; }
   .stats { grid-template-columns: 1fr; }
   .timeline { --tl-pad: 1.25rem; --tl-title: 1.25rem; }
   .timeline > li { padding-left: 1.75rem; }
-  /* filter: three equal selects, then reset + count */
-  /* filter: not sticky here, it would cover a fifth of a phone screen */
+  /* filter: "Filter" button + count; open = three equal selects, then reset + apply */
+  /* not sticky here, it would cover a fifth of a phone screen */
   .tl-filter { position: static; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem 0.5rem; }
+  .tl-filter .tl-filter-toggle { display: inline-flex; grid-area: 1 / 1; justify-self: start; }
+  .tl-count { grid-area: 1 / 2 / auto / -1; justify-self: end; margin-left: 0; }
+  .tl-filter:not(.is-open) > :is(label, [type="reset"], .tl-apply) { display: none; }
   .tl-filter label { flex-direction: column; align-items: stretch; }
   .tl-filter select { min-width: 0; width: 100%; }
-  .tl-count { grid-column: 2 / -1; justify-self: end; margin-left: 0; }
+  .tl-filter .tl-apply { display: block; grid-column: span 2; }
   .stat, .stat + .stat { padding: 1.5rem 0; border-left: 0; border-bottom: 1px solid var(--line); }
 }
