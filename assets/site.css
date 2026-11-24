@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Lato";
-  src: url("/assets/fonts/lato-latin-700.woff2") format("woff2");
+  src: url("fonts/lato-latin-700.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Lato";
-  src: url("/assets/fonts/lato-latin-900.woff2") format("woff2");
+  src: url("fonts/lato-latin-900.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "Roboto Variable";
-  src: url("/assets/fonts/roboto-latin-wght.woff2") format("woff2-variations");
+  src: url("fonts/roboto-latin-wght.woff2") format("woff2-variations");
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
@@ -96,7 +96,7 @@
 html {
   max-width: 100%;
   overflow-x: clip;
-  background-color: var(--white);
+  background-color: var(--surface-page);
   color-scheme: light;
   scroll-behavior: smooth;
 }
@@ -106,8 +106,8 @@ body {
   overflow-x: clip;
   margin: 0;
   padding: 0;
-  background-color: var(--white);
-  color: var(--red-900);
+  background-color: var(--surface-page);
+  color: var(--text-heading);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
@@ -138,7 +138,7 @@ p, h1, h2, h3, h4, dt, dd, td, th, code, a, span, div, article {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  color: var(--red-900);
+  color: var(--text-heading);
   margin: 0 0 1rem;
   text-wrap: balance;
 }
@@ -164,7 +164,7 @@ h3 {
 }
 
 h1 span, h2 span {
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 p {
@@ -187,7 +187,7 @@ p {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin: 0 0 0.65rem;
 }
 
@@ -210,7 +210,7 @@ code {
 }
 
 a {
-  color: var(--red-900);
+  color: var(--text-heading);
   text-decoration: underline;
   text-underline-offset: 0.2em;
   transition: color 200ms cubic-bezier(.2,.7,.2,1);
@@ -305,7 +305,7 @@ body > header.site-header,
 
 @supports not (backdrop-filter: blur(1px)) {
   .site-header {
-    background: var(--white);
+    background: var(--surface-page);
   }
 }
 
@@ -328,7 +328,7 @@ body > header.site-header,
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .brand-lockup-light .brand-name {
@@ -346,7 +346,7 @@ body > header.site-header,
   font-family: var(--font-body);
   font-size: 15px;
   font-weight: 500;
-  color: var(--red-900);
+  color: var(--text-heading);
   text-decoration: none;
   transition: color 200ms cubic-bezier(.2,.7,.2,1);
 }
@@ -435,25 +435,25 @@ a.btn, button.btn, .copy-btn {
 .btn-outline {
   background-color: transparent;
   border-color: var(--red-900);
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .btn-outline:hover {
   background-color: rgba(219, 0, 15, 0.08);
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .btn-white {
-  background-color: var(--white);
-  border-color: var(--white);
-  color: var(--red-900);
+  background-color: var(--surface-page);
+  border-color: var(--surface-page);
+  color: var(--text-heading);
   box-shadow: 0 8px 24px rgba(14, 3, 71, 0.18);
 }
 
 .btn-white:hover {
-  background-color: var(--lavender);
-  border-color: var(--lavender);
-  color: var(--red-900);
+  background-color: var(--surface-subtle);
+  border-color: var(--surface-subtle);
+  color: var(--text-heading);
 }
 
 .btn-arrow,
@@ -474,7 +474,7 @@ a.btn, button.btn, .copy-btn {
 }
 
 .btn-arrow::after {
-  background: var(--white) var(--ic-arrow-red) center / 18px 18px no-repeat;
+  background: var(--surface-page) var(--ic-arrow-red) center / 18px 18px no-repeat;
 }
 
 .btn-arrow-red::after {
@@ -531,7 +531,7 @@ a.btn, button.btn, .copy-btn {
   height: 44px;
   border-radius: 50%;
   flex-shrink: 0;
-  background: var(--white) var(--ic-download-red) center / 20px 20px no-repeat;
+  background: var(--surface-page) var(--ic-download-red) center / 20px 20px no-repeat;
   box-shadow: 0 2px 6px rgba(14, 3, 71, 0.12);
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -586,7 +586,7 @@ a.btn, button.btn, .copy-btn {
   border-radius: 999px;
   border: 1px solid rgba(219, 0, 15, 0.25);
   background: rgba(219, 0, 15, 0.04);
-  color: var(--red-900);
+  color: var(--text-heading);
   font-size: 13px;
   font-weight: 700;
   margin: 0;
@@ -637,7 +637,7 @@ a.btn, button.btn, .copy-btn {
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin: 0;
   margin-bottom: 1.75rem;
   text-transform: capitalize;
@@ -679,7 +679,7 @@ a.btn, button.btn, .copy-btn {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--muted);
-  background: var(--lavender);
+  background: var(--surface-subtle);
   border: 1px solid rgba(14, 3, 71, 0.08);
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -759,7 +759,7 @@ main #hero .hero-workbench article.deck-item,
   font-family: var(--font-mono);
   font-size: 15px;
   font-weight: 700;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin: 0;
 }
 
@@ -828,7 +828,7 @@ main #hero .hero-workbench article.deck-item,
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin: 0;
   text-transform: capitalize;
 }
@@ -858,7 +858,7 @@ main #hero .hero-workbench article.deck-item,
   font-size: clamp(2rem, 2.2vw, 4rem);
   font-weight: 700;
   line-height: 1.38;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin-bottom: 1.5rem;
   letter-spacing: -0.015em;
   text-transform: capitalize;
@@ -921,7 +921,7 @@ main #manifesto .swiss-ledger article.ledger-item,
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 900;
-  color: var(--red-900);
+  color: var(--text-heading);
   line-height: 1.3;
   margin-bottom: 0.5rem;
 }
@@ -952,7 +952,7 @@ main #manifesto .swiss-ledger article.ledger-item,
 
 .manifesto-quote {
   margin-top: 2.5rem;
-  background: var(--lavender);
+  background: var(--surface-subtle);
   border-left: 4px solid var(--red-600);
   padding: 1.5rem 2rem;
   border-radius: 0 16px 16px 0;
@@ -963,7 +963,7 @@ main #manifesto .swiss-ledger article.ledger-item,
   font-size: 1.25rem;
   font-weight: 700;
   font-style: italic;
-  color: var(--red-900);
+  color: var(--text-heading);
   line-height: 1.5;
   margin-bottom: 0.5rem;
   text-transform: capitalize;
@@ -982,7 +982,7 @@ main #manifesto .swiss-ledger article.ledger-item,
    Section 4: Fitur ("The Interlocking Architectural Matrix")
    ========================================================================== */
 #fitur {
-  background: var(--white);
+  background: var(--surface-page);
   border-bottom: 1px solid var(--line);
   padding-block: clamp(5rem, 9vw, 7.5rem);
 }
@@ -1005,7 +1005,7 @@ main #manifesto .swiss-ledger article.ledger-item,
   font-weight: 900;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: var(--red-900);
+  color: var(--text-heading);
   width: 70%;
   display: block;
   text-transform: capitalize;
@@ -1110,7 +1110,7 @@ main #fitur .fitur-matrix article.fitur-card {
   display: block;
   width: 24px;
   height: 24px;
-  background-color: var(--white);
+  background-color: var(--surface-page);
   -webkit-mask: var(--ic-stack) center / contain no-repeat;
   mask: var(--ic-stack) center / contain no-repeat;
 }
@@ -1212,7 +1212,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
-  color: var(--red-900);
+  color: var(--text-heading);
   background: rgba(219, 0, 15, 0.08);
   padding: 0.25rem 0.6rem;
   border-radius: 99px;
@@ -1284,7 +1284,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-family: var(--font-heading);
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--red-900);
+  color: var(--text-heading);
   line-height: 1.25;
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -1304,7 +1304,7 @@ main #fitur .fitur-matrix article.fitur-card {
   margin-top: auto;
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--red-900);
+  color: var(--text-heading);
   width: 100%;
   transition: background 200ms ease, color 200ms ease;
 }
@@ -1376,7 +1376,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: 900;
   line-height: 1.1;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin-bottom: 1.25rem;
 }
 
@@ -1397,7 +1397,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin-bottom: 0.75rem;
 }
 
@@ -1412,10 +1412,10 @@ main #fitur .fitur-matrix article.fitur-card {
   font-size: 13px;
   font-weight: 600;
   padding: 0.35rem 0.85rem;
-  background: var(--lavender);
+  background: var(--surface-subtle);
   border: 1px solid rgba(14, 3, 71, 0.1);
   border-radius: 999px;
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .arch-dl {
@@ -1447,7 +1447,7 @@ main #fitur .fitur-matrix article.fitur-card {
 }
 
 .arch-row dd {
-  color: var(--red-900);
+  color: var(--text-heading);
   font-weight: 700;
 }
 
@@ -1545,13 +1545,13 @@ main #fitur .fitur-matrix article.fitur-card {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 900;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin-bottom: 0.5rem;
 }
 
 .spec-val {
   font-size: 14px;
-  color: var(--red-900);
+  color: var(--text-heading);
   font-family: var(--font-mono);
   margin-bottom: 0.75rem;
 }
@@ -1584,7 +1584,7 @@ main #fitur .fitur-matrix article.fitur-card {
 }
 
 .spec-card dd {
-  color: var(--red-900);
+  color: var(--text-heading);
   font-weight: 700;
 }
 
@@ -1698,7 +1698,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--red-900);
+  color: var(--text-heading);
   margin-bottom: 1.25rem;
 }
 
@@ -1720,7 +1720,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.035em;
-  color: var(--navy);
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
@@ -1807,7 +1807,7 @@ main #fitur .fitur-matrix article.fitur-card {
 
 .iso-table td {
   font-family: var(--font-mono);
-  color: var(--red-900);
+  color: var(--text-heading);
   font-weight: 700;
   text-align: right;
 }
@@ -2101,7 +2101,7 @@ nav.navbar li :where(a, [role="link"]) {
   right: 0;
   left: auto;
   transform: translateY(-6px);
-  background: var(--white);
+  background: var(--surface-page);
   min-width: 250px;
   max-width: calc(100vw - 32px);
   border-radius: 16px;
@@ -2153,7 +2153,7 @@ nav.navbar li :where(a, [role="link"]) {
   border-bottom: 1px solid #F0F0F0;
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
 }
 
@@ -2171,7 +2171,7 @@ nav.navbar li :where(a, [role="link"]) {
 }
 
 .dropdown-content button.d-content-back {
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .dropdown-content button.d-content-back:hover,
@@ -2212,7 +2212,7 @@ nav.navbar li :where(a, [role="link"]) {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 16px;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   display: inline-block;
   text-decoration: none;
   line-height: normal;
@@ -2220,7 +2220,7 @@ nav.navbar li :where(a, [role="link"]) {
 
 .btn-navy:hover {
   background-color: rgba(14, 3, 71, 0.05);
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .btn-navy.active {
@@ -2309,7 +2309,7 @@ nav.navbar li :where(a, [role="link"]) {
     height: calc(100dvh - 58px);
     margin-left: 0;
     padding: 0.75rem var(--pad-x) 2rem;
-    background: var(--white);
+    background: var(--surface-page);
     border-top: 1px solid var(--line);
     overflow-y: auto;
     gap: 0.125rem;
@@ -2371,7 +2371,7 @@ nav.navbar li :where(a, [role="link"]) {
     width: 100%;
     margin: 0;
     padding: 0.55rem 0.75rem;
-    color: var(--red-900);
+    color: var(--text-heading);
     font-family: var(--font-body);
     font-size: 15.5px;
     font-weight: 700;
@@ -2400,7 +2400,7 @@ button.btn-lang {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--white);
+  background-color: var(--surface-page);
   border: 1.5px solid rgba(14, 3, 71, 0.22);
   color: #0E0347;
   font-family: var(--font-mono);
@@ -2416,8 +2416,8 @@ button.btn-lang {
 
 button.btn-lang:hover {
   border-color: var(--red-900);
-  color: var(--red-900);
-  background-color: var(--lavender);
+  color: var(--text-heading);
+  background-color: var(--surface-subtle);
 }
 
 @media (max-width: 767px) {
@@ -2481,12 +2481,6 @@ button.btn-theme:active {
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --navy: #FFFFFF;
-  --red-900: #FFFFFF;
-  --red-700: #BB080B;
-  --red-600: #DB000F;
-  --lavender: #150B52;
-  --white: #0B0711;
   --muted: #C4C0D4;
   --line: rgba(196, 192, 212, 0.18);
 }
@@ -2539,3 +2533,209 @@ button.btn-theme:active {
     background-color: #0B0711;
   }
 }
+
+/* ==========================================================================
+   DESIGN.md conformance layer — keep this block identical in about, latest,
+   learns and events. It is loaded last so it wins the cascade.
+   ========================================================================== */
+:root {
+  --red-900: #A10000;
+  --red-700: #BB080B;
+  --red-600: #DB000F;
+  --red-500: #FF0000;
+  --navy-950: #0B0711;
+  --navy-900: #0E0347;
+  --navy-800: #150B52;
+  --blue: #0035C6;
+  --lavender: #F7F6FF;
+  --white: #FFFFFF;
+
+  --surface-page: #FFFFFF;
+  --surface-card: #FFFFFF;
+  --surface-subtle: #F7F6FF;
+  --surface-dock: #F0EFFC;
+  --surface-header: rgba(255, 255, 255, 0.82);
+  --text-primary: #0E0347;
+  --text-heading: #A10000;
+  --text-muted: #5B5A78;
+  --text-accent: #DB000F;
+  --border-line: rgba(14, 3, 71, 0.10);
+  --border-card: rgba(14, 3, 71, 0.12);
+
+  --font-heading: "Lato", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --container-max: 100%;
+}
+
+/* Dark mode: only semantic tokens change; --navy-*, --red-*, --white stay constant. */
+:root[data-theme="dark"] {
+  --surface-page: #0B0711;
+  --surface-card: #150B52;
+  --surface-subtle: #150B52;
+  --surface-dock: #0E0347;
+  --surface-header: rgba(11, 7, 17, 0.88);
+  --text-primary: #FFFFFF;
+  --text-heading: #FFFFFF;
+  --text-muted: #C4C0D4;
+  --border-line: rgba(196, 192, 212, 0.18);
+  --border-card: rgba(196, 192, 212, 0.16);
+}
+
+/* Grid & root scale (xs default, sm, md, lg, xl, xxl) */
+html { font-size: 100%; }
+@media (min-width: 576px)  { :root { --container-max: 510px; }  html { font-size: 106.25%; } }
+@media (min-width: 768px)  { :root { --container-max: 700px; }  html { font-size: 112.5%; } }
+@media (min-width: 1024px) { :root { --container-max: 950px; }  html { font-size: 118.75%; } }
+@media (min-width: 1280px) { :root { --container-max: 1200px; } html { font-size: 125%; } }
+@media (min-width: 1536px) { :root { --container-max: 1450px; } html { font-size: 131.25%; } }
+
+.site-header,
+.site-footer {
+  padding-inline: max(1rem, calc((100% - var(--container-max)) / 2));
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Header & navigation */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 48px;
+  padding-block: 0.65rem;
+  gap: 1.25rem;
+  background: var(--surface-header);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border-line);
+}
+:root .site-header {
+  background: var(--surface-header);
+  border-bottom-color: var(--border-line);
+}
+:root[data-theme="dark"] .site-header { border-bottom-color: var(--border-line); }
+.site-header .brand-name {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.site-header .nav-list a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.site-header .nav-list a[aria-current="page"] { font-weight: 700; }
+:root:not([data-theme="dark"]) .dropdown-content a { color: #0E0347; }
+
+#about-menu-btn.btn-navy {
+  border-radius: 16px;
+  font-size: 13px;
+}
+@media (min-width: 768px) {
+  .site-header .dropdown-content {
+    top: calc(100% + 18px);
+    min-width: 250px;
+    border-radius: 16px;
+  }
+}
+
+button.btn-theme {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  border-radius: 999px;
+}
+button.btn-lang {
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+@media (max-width: 767px) {
+  .nav-toggle {
+    width: 38px;
+    height: 38px;
+  }
+  .header-menu.is-open {
+    top: 58px;
+    height: calc(100dvh - 58px);
+  }
+}
+
+/* Hero heading. :not(#_) lifts specificity over page-level `.hero h1` rules */
+main h1:not(#_) {
+  font-family: var(--font-heading);
+  font-size: clamp(1.85rem, 4.8vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-heading);
+}
+@media (min-width: 1280px) { main h1:not(#_) { font-size: 3.1rem; } }
+@media (min-width: 1536px) { main h1:not(#_) { font-size: 3.5rem; } }
+
+/* Buttons & chips */
+.btn-primary,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 1.5rem;
+  border-radius: 9999px;
+}
+.btn-primary,
+.button:not([class*="--outline"]) {
+  background: var(--red-600);
+  border-color: var(--red-600);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(219, 0, 15, 0.24);
+}
+.hero-chip,
+.chip {
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 13px;
+  border: 1px solid rgba(219, 0, 15, 0.25);
+  background: rgba(219, 0, 15, 0.04);
+}
+
+/* Footer (body > footer.site-footer beats page-level `body > footer.site-footer` rules) */
+body > footer.site-footer {
+  background: #6D0000;
+  border-top: 3px solid var(--red-600);
+  color: rgba(255, 255, 255, 0.92);
+}
+:root[data-theme="dark"] body > footer.site-footer {
+  background: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-950) 100%);
+  border-top-color: var(--red-600);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 576px)  { .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.footer-top {
+  color: #FFFFFF;
+  font-size: 12.5px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+}
+
+/* Motion: only transform and opacity may transition */
+*,
+*::before,
+*::after {
+  transition-property: opacity, transform !important;
+}
+
+/* about: sections carry the container, so --pad-x is the DESIGN.md container gutter */
+:root { --pad-x: max(1rem, calc((100% - var(--container-max)) / 2)); }

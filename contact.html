@@ -7,9 +7,9 @@
   <title>Contact — Radova Linux</title>
   <meta name="description" content="Get in touch with the Radova Linux team for support regarding institutional memory, archives, and digital asset sovereignty.">
   <link rel="canonical" href="https://radova.org/contact">
-  <link rel="stylesheet" href="https://radova.org/about/assets/pico.min.css">
-  <link rel="stylesheet" href="https://radova.org/about/assets/site.css?v=8">
-  <link rel="stylesheet" href="https://radova.org/about/assets/contact.css">
+  <link rel="stylesheet" href="assets/pico.min.css">
+  <link rel="stylesheet" href="assets/site.css?v=9">
+  <link rel="stylesheet" href="assets/contact.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <style>
@@ -23,7 +23,7 @@
 
  <header class="site-header">
     <a class="brand-lockup" href="https://radova.org/">
-      <img src="/assets/logo.png" alt="Radova Logo" width="32">
+      <img src="assets/logo-64.webp" alt="Radova Logo" width="32" height="32">
       <span class="brand-name">RADOVA</span>
     </a>
 
@@ -41,29 +41,29 @@
       <nav class="navbar" aria-label="About menu">
         <ul class="nav-links">
           <li class="dropdown">
-            <a id="about-menu-btn" href="#" class="btn-navy" aria-haspopup="true" aria-expanded="false" data-i18n="nav.about">About</a>
+            <button type="button" id="about-menu-btn" class="btn-navy" aria-haspopup="true" aria-expanded="false" data-i18n="nav.about">About</button>
             <div class="menu-arrow" aria-hidden="true"></div>
-            <div class="dropdown-content" role="menu" hx-boost="true" hx-select="main" hx-target="main" hx-swap="outerHTML" hx-push-url="true">
-              <a class="d-content-h" href="https://radova.org/about/" role="menuitem" data-i18n="nav.about">About</a>
-              <a class="d-content-r" href="https://radova.org/about/history" role="menuitem" data-i18n="nav.history">History</a>
-              <a class="d-content-c" href="https://radova.org/about/contact" role="menuitem" data-i18n="nav.contact">Contact</a>
-              <button type="button" class="d-content-back" role="menuitem" data-i18n="nav.back">Back</button>
+            <div class="dropdown-content" hx-boost="true" hx-select="main" hx-target="main" hx-swap="outerHTML" hx-push-url="true">
+              <a class="d-content-h" href="https://radova.org/about/" data-i18n="nav.about">About</a>
+              <a class="d-content-r" href="https://radova.org/about/history" data-i18n="nav.history">History</a>
+              <a class="d-content-c" href="https://radova.org/about/contact" data-i18n="nav.contact">Contact</a>
+              <button type="button" class="d-content-back" data-i18n="nav.back">Back</button>
             </div>
           </li>
         </ul>
       </nav>
     </div>
 
-    <button type="button" id="theme-toggle" class="btn-theme" data-set-theme="light" hx-get="assets/theme-dark.html" hx-target="#theme-toggle" hx-swap="outerHTML" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+    <button type="button" id="theme-toggle" class="btn-theme" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
       <svg width="16" height="16" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M216.7 152.6A91.9 91.9 0 0 1 103.4 39.3a92 92 0 1 0 113.3 113.3Z"/></svg>
     </button>
 
-    <button type="button" id="lang-toggle" class="btn-lang" aria-label="Switch language to Indonesian">EN</button>
+    <button type="button" id="lang-toggle" class="btn-lang" aria-label="EN: switch language to Indonesian">EN</button>
 
     <button
       type="button"
       class="nav-toggle"
-      aria-label="Buka menu navigasi"
+      aria-label="Open navigation menu"
       aria-controls="primary-nav"
       aria-expanded="false"
     >
@@ -191,7 +191,7 @@
   <footer class="site-footer">
     <div class="footer-grid">
       <nav class="footer-col" aria-label="Learn About Radova">
-        <h3 class="footer-heading" data-i18n="footer.col1">Learn About Radova</h3>
+        <h2 class="footer-heading" data-i18n="footer.col1">Learn About Radova</h2>
         <ul class="footer-links">
           <li><a href="https://radova.org/about/" data-i18n="nav.about">About</a></li>
           <li><a href="https://radova.org/about/history" data-i18n="nav.history">History</a></li>
@@ -201,7 +201,7 @@
       </nav>
 
       <nav class="footer-col" aria-label="Resources">
-        <h3 class="footer-heading" data-i18n="footer.col2">Resources</h3>
+        <h2 class="footer-heading" data-i18n="footer.col2">Resources</h2>
         <ul class="footer-links">
           <li><a target="_blank" rel="noopener" href="https://packer.radova.org" data-i18n="nav.packages">Packages</a></li>
           <li><a target="_blank" rel="noopener" href="https://wiki.radova.org" data-i18n="nav.wiki">Wiki</a></li>
@@ -211,7 +211,7 @@
       </nav>
 
       <nav class="footer-col" aria-label="Core Pillars">
-        <h3 class="footer-heading" data-i18n="footer.col3">Core Pillars</h3>
+        <h2 class="footer-heading" data-i18n="footer.col3">Core Pillars</h2>
         <ul class="footer-links">
           <li><a href="https://radova.org/#fitur">Memora</a></li>
           <li><a href="https://radova.org/#fitur">Evrocks</a></li>
@@ -221,7 +221,7 @@
       </nav>
 
       <nav class="footer-col" aria-label="Help and Specs">
-        <h3 class="footer-heading" data-i18n="footer.col4">Help &amp; Specs</h3>
+        <h2 class="footer-heading" data-i18n="footer.col4">Help &amp; Specs</h2>
         <ul class="footer-links">
           <li><a href="https://radova.org/about/contact" data-i18n="nav.contact">Contact</a></li>
           <li><a href="https://radova.org/#spesifikasi" data-i18n="footer.specs">System Requirements</a></li>
@@ -233,7 +233,7 @@
     <div class="footer-bottom">
       <div class="footer-brand-bar">
         <span class="brand-lockup brand-lockup-light">
-          <img src="/assets/logo-white.png" width="28" alt="Radova OS">
+          <img src="assets/logo-white-64.webp" alt="Radova Logo" width="28" height="28" loading="lazy" decoding="async">
           <span class="brand-name">RADOVA</span>
         </span>
         <p class="footer-copy" data-i18n="footer.copy">© 2026 yuros.org · Released under the MIT License</p>
@@ -242,9 +242,9 @@
       <a class="footer-top" href="#main" data-i18n="footer.top">Back to top ↑</a>
     </div>
   </footer>
-  <script src="https://radova.org/about/assets/contact.js"></script>
-  <script src="https://radova.org/about/assets/site.js"></script>
-  <script src="https://radova.org/about/assets/htmx.min.js"></script>
-  <script src="https://radova.org/about/assets/navbar.js"></script>
+  <script src="assets/contact.js"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/htmx.min.js"></script>
+  <script src="assets/navbar.js"></script>
 </body>
 </html>

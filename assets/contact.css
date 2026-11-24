@@ -18,12 +18,12 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 16px;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .tab-btn:hover {
   background: rgba(14, 3, 71, 0.05);
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .tab-btn.active {
@@ -50,7 +50,7 @@ form label {
 
 .form-input {
   margin-top: 0.5rem;
-  background: var(--lavender);
+  background: var(--surface-subtle);
   border: 1px solid var(--line);
   border-radius: 16px;
   width: 100%;

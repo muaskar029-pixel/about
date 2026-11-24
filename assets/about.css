@@ -23,7 +23,7 @@
   --red: #DB000F;
   --red-gradient: linear-gradient(135deg, var(--red-900) 0%, var(--red) 100%);
 
-  --text: var(--navy);
+  --text: var(--text-primary);
   --muted: rgba(14, 3, 71, 0.70);
   --line: rgba(14, 3, 71, 0.12);
   --accent: var(--red);
@@ -42,7 +42,7 @@
 
 body {
   margin: 0;
-  background: var(--white);
+  background: var(--surface-page);
   color: var(--text);
   font: 400 1.0625rem/1.65 var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -73,16 +73,27 @@ p { margin: 0; text-wrap: balance; }
   left: 1rem;
   top: -3rem;
   padding: 0.5rem 1rem;
-  background: var(--white);
-  color: var(--red-900);
+  background: var(--surface-page);
+  color: var(--text-heading);
   border: 1px solid var(--line);
   border-radius: 6px;
   z-index: 100;
 }
 .skip-link:focus { top: 1rem; }
 
+/* read by screen readers, not shown */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .wrap {
-  width: min(var(--wrap), 100% - 3rem);
+  /* DESIGN.md container: same edges as .site-header / .site-footer */
+  width: min(var(--container-max), 100% - 2rem);
   margin-inline: auto;
 }
 
@@ -224,14 +235,14 @@ p { margin: 0; text-wrap: balance; }
 }
 
 .principle {
-  background: var(--white);
+  background: var(--surface-page);
   border-top: 3px solid var(--red); /* inset box-shadow bled a red hairline on fractional-pixel card edges */
   padding: 2.25rem 2rem 2.5rem;
 }
 
 .principle .num {
   font: 500 0.8125rem/1 var(--font-mono);
-  color: var(--red-900);
+  color: var(--text-heading);
 }
 
 .principle h3 {
@@ -313,8 +324,8 @@ p { margin: 0; text-wrap: balance; }
       animation-timeline: view();
       animation-range: entry 60% cover 45%;
     }
-    /* 0.6 floor keeps unlit words at >= 3:1 contrast (large text), so they stay readable mid-scroll */
-    @keyframes lit { from { opacity: 0.6; } to { opacity: 1; } }
+    /* 0.8 floor: the text colour is already 70% (--muted), so unlit words stay >= 3:1 (large text); 0.6 measured 2.69:1 */
+    @keyframes lit { from { opacity: 0.8; } to { opacity: 1; } }
   }
 }
 
@@ -425,7 +436,7 @@ p { margin: 0; text-wrap: balance; }
   padding: var(--tl-pad);
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: var(--white);
+  background: var(--surface-page);
   box-shadow: 0 12px 32px -20px rgba(14, 3, 71, 0.25);
   transition: border-color 0.3s;
 }
@@ -496,7 +507,7 @@ p { margin: 0; text-wrap: balance; }
   gap: 0.75rem 1rem;
   padding: 1rem 0.75rem;
   margin: 0 -0.75rem 1.5rem; /* white runs past the dots' halo when stuck */
-  background: var(--white);
+  background: var(--surface-page);
   border-bottom: 1px solid var(--line);
 }
 
@@ -518,7 +529,7 @@ p { margin: 0; text-wrap: balance; }
   padding: 0 1rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--white);
+  background: var(--surface-page);
   color: var(--text);
   font: 400 1rem/1 var(--font-body);
   cursor: pointer;
@@ -565,7 +576,7 @@ p { margin: 0; text-wrap: balance; }
 
 /* documentation: photo thumbnails and/or a full-width video */
 .tl-media { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.tl-media :is(img, video) { display: block; width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: var(--lavender); }
+.tl-media :is(img, video) { display: block; width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: var(--surface-subtle); }
 
 
 .tl-thumb {
@@ -621,8 +632,8 @@ p { margin: 0; text-wrap: balance; }
   height: 2.75rem;
   border: 0;
   border-radius: 50%;
-  background: var(--white);
-  color: var(--navy);
+  background: var(--surface-page);
+  color: var(--text-primary);
   font: 400 1.75rem/1 var(--font-body);
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
@@ -676,49 +687,94 @@ p { margin: 0; text-wrap: balance; }
   .tl-thumb:hover :is(img, video) { transform: scale(1.08); }
 }
 
-/* Team */
-.team-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 2rem;
-  flex-wrap: wrap;
+/* Team: text column + pages of three zigzag tiles, paged with the arrow buttons (the list is long) */
+/* narrow screens: heading, tiles, then the arrows right under the tiles */
+.team-split {
+  display: grid;
+  gap: 1.25rem;
 }
+
+.team-head { margin-bottom: 1.25rem; }
+.team-head .eyebrow { margin-bottom: 1.25rem; }
+.team-lead { margin-top: 1.25rem; max-width: 40ch; color: var(--muted); }
+
+.team-nav { display: flex; gap: 0.75rem; }
+
+.team-nav button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  background: var(--surface-card);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.team-nav button:hover { border-color: var(--red); color: var(--red); }
+.team-nav button:active { transform: scale(0.96); }
+.team-nav button[aria-disabled="true"] { opacity: 0.35; cursor: default; border-color: var(--border-card); color: var(--text-primary); transform: none; }
 
 .team {
+  --team-gap: 0.75rem;
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 3.5rem 0 0;
+  display: grid;
+  /* one page = two columns = three teams in a zigzag: left-top, right-middle, left-bottom.
+     Each tile spans two of four equal rows; `dense` lets the third tile drop back into the left column. */
+  grid-auto-flow: column dense;
+  grid-template-rows: repeat(4, 1fr);
+  grid-auto-columns: calc((100% - var(--team-gap)) / 2);
+  gap: var(--team-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* the arrow buttons replace the scrollbar; swipe and trackpad still scroll */
   counter-reset: t;
-  border-bottom: 1px solid var(--line);
 }
 
+.team::-webkit-scrollbar { display: none; }
+
+.team-row:nth-child(3n + 1) { grid-row: 1 / 3; scroll-snap-align: start; }
+.team-row:nth-child(3n + 2) { grid-row: 2 / 4; }
+.team-row:nth-child(3n + 3) { grid-row: 3 / 5; }
+
 .team-row {
-  display: grid;
-  grid-template-columns: 3rem minmax(10rem, 1fr) minmax(0, 1.5fr);
-  gap: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 1.75rem 1rem;
-  border-top: 1px solid var(--line);
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 2.25rem 1rem 1.5rem;
+  text-align: center;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
   counter-increment: t;
-  transition: background 0.3s;
 }
 
 .team-row::before {
   content: counter(t, decimal-leading-zero);
-  font: 500 0.8125rem/1 var(--font-mono);
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  font: 500 0.75rem/1 var(--font-mono);
   color: var(--muted);
 }
 
-.team-id h3 {
-  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
-  transition: color 0.3s;
-}
+/* site.css gives every h3 and p a bottom margin; tiles space their own content with gap */
+.team-id h3 { font-size: 1.25rem; margin-bottom: 0; }
 
 .team .role {
-  font: 500 0.8125rem/1.6 var(--font-mono);
-  color: var(--red-900);
-  margin-top: 0.25rem;
+  margin: 0.35rem 0 0;
+  font: 500 0.6875rem/1.4 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-heading);
 }
 
 /* member chips: avatar + name, always visible (works for long names, touch and keyboard) */
@@ -740,7 +796,7 @@ p { margin: 0; text-wrap: balance; }
   padding: 0.3rem 0.9rem 0.3rem 0.3rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--white);
+  background: var(--surface-page);
   transition: border-color 0.3s;
 }
 
@@ -765,15 +821,56 @@ p { margin: 0; text-wrap: balance; }
   overflow-wrap: anywhere;
 }
 
-.team-row:hover { background: var(--lavender); }
+/* inside a team tile: avatars on top (as in the reference), each member as avatar over name */
+.team .members { order: -1; justify-content: center; gap: 0.75rem 1rem; }
+.team .member { flex-direction: column; gap: 0.4rem; padding: 0; border: 0; background: none; }
+.team .avatar { width: 52px; height: 52px; font-size: 1rem; }
+.team .member-name { font-size: 0.75rem; color: var(--muted); }
+
+.team-row:hover { border-color: rgba(219, 0, 15, 0.35); }
 .team-row:hover h3 { color: var(--red); }
-.team-row:hover .member { border-color: rgba(219, 0, 15, 0.35); }
+
+/* Phones: one column per page; three compact tiles zigzag left, right, left */
+@media (max-width: 575px) {
+  .team {
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-columns: 100%;
+  }
+  .team-row:nth-child(3n + 1) { grid-row: 1; }
+  .team-row:nth-child(3n + 2) { grid-row: 2; justify-self: end; }
+  .team-row:nth-child(3n + 3) { grid-row: 3; }
+  .team-row {
+    width: 88%;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 1rem 3rem 1.1rem 1.1rem; /* right: room for the 01 counter */
+    text-align: left;
+  }
+  .team-row::before { top: 1.1rem; left: auto; right: 1rem; }
+  .team .members { order: 0; justify-content: flex-start; gap: 0.5rem 1rem; }
+  .team .member { flex-direction: row; gap: 0.5rem; }
+  .team .avatar { width: 32px; height: 32px; font-size: 0.75rem; }
+  .team .member-name { font-size: 0.8125rem; }
+}
+
+@media (min-width: 1024px) {
+  /* tiles left over both rows; heading (row 1) and arrows (row 2) meet in the middle on the right */
+  .team-split {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: clamp(2.5rem, 5vw, 4.5rem);
+    row-gap: 0;
+  }
+  .team-head { grid-column: 2; grid-row: 1; align-self: end; margin-bottom: 0; }
+  .team { grid-column: 1; grid-row: 1 / 3; }
+  .team-nav { grid-column: 2; grid-row: 2; align-self: start; margin-top: 2rem; }
+}
 
 /* Quote */
 .ab-quote {
   padding: clamp(4.5rem, 10vw, 7rem) 0;
   border-top: 1px solid var(--line);
-  background: var(--lavender);
+  background: var(--surface-subtle);
   text-align: center;
 }
 
@@ -819,8 +916,8 @@ p { margin: 0; text-wrap: balance; }
   .ab-hero .sub { animation-delay: 0.18s; }
 
   @keyframes rise {
-    from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
-    to { opacity: 1; transform: none; filter: none; }
+    from { transform: translateY(16px); }
+    to { transform: none; }
   }
 }
 
@@ -828,8 +925,6 @@ p { margin: 0; text-wrap: balance; }
 @media (max-width: 900px) {
   .split { grid-template-columns: 1fr; }
   .principles { grid-template-columns: 1fr; }
-  .team-row { grid-template-columns: 2.5rem 1fr; padding-inline: 0.5rem; }
-  .members { grid-column: 2; justify-content: flex-start; }
   .mission li { grid-template-columns: 3rem 1fr; }
   .mission li p { grid-column: 2; }
   .vm-grid { grid-template-columns: 1fr; }
