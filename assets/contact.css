@@ -54,7 +54,14 @@ form label {
   border: 1px solid var(--line);
   border-radius: 16px;
   width: 100%;
+  /* sizing that Pico used to give the fields; Pico (82 KB) is no longer loaded here */
+  padding: 0.75rem 1rem;
+  font: inherit;
+  line-height: 1.5;
+  color: var(--text-primary);
 }
+
+textarea.form-input { min-height: 9rem; }
 
 /* HTMX Loading Indicator Styles */
 .htmx-indicator {
