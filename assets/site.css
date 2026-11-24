@@ -50,23 +50,6 @@
   --muted: #5b5a78;
   --line: rgba(14, 3, 71, 0.10);
   --navy-gradient: linear-gradient(135deg, #0E0347 0%, #0E0347 55%, #0B2E8D 130%);
-
-  --pico-font-family: var(--font-body);
-  --pico-color: #0E0347;
-  --pico-muted-color: #5b5a78;
-  --pico-background-color: #ffffff;
-  --pico-primary: #A10000;
-  --pico-primary-background: #DB000F;
-  --pico-primary-hover-background: #BB080B;
-  --pico-primary-underline: rgba(161, 0, 0, 0.5);
-  --pico-primary-inverse: #ffffff;
-  --pico-secondary: #0E0347;
-  --pico-secondary-background: #0E0347;
-  --pico-card-background-color: #ffffff;
-  --pico-card-border-color: rgba(14, 3, 71, 0.10);
-  --pico-border-radius: 12px;
-  --pico-form-element-focus-color: #DB000F;
-
   --pad-x: max(1rem, calc((100% - 72rem) / 2));
   --pad-y: clamp(5rem, 9vw, 7.5rem);
 
@@ -2141,7 +2124,7 @@ nav.navbar li :where(a, [role="link"]) {
   margin: 0;
   padding: 1.2rem 1.5rem;
   background: transparent;
-  color: #A3A3A3;
+  color: #0E0347;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 13px;
@@ -2189,7 +2172,7 @@ nav.navbar li :where(a, [role="link"]) {
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #A3A3A3;
+  border-bottom: 10px solid rgba(14, 3, 71, 0.14);
   z-index: 1000;
   display: none;
   margin-top: 8px;

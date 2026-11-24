@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const navBtn = document.getElementById('about-menu-btn');
     const dropdownContainer = document.querySelector('.dropdown');
     const backBtn = document.querySelector('.d-content-back');
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // language switcher (EN <-> ID)
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const langBtn = document.getElementById("lang-toggle");
     if (!langBtn) return;
 
@@ -194,9 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return "light";
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    applyTheme(getSavedTheme());
-  });
+  applyTheme(getSavedTheme());
 
   document.addEventListener("click", function (e) {
     if (e.target.closest && e.target.closest("#theme-toggle")) {
@@ -244,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target.id === "team-track") sync(e.target);
   }, true);
 
-  document.addEventListener("DOMContentLoaded", init);
+  init();
   document.addEventListener("htmx:afterSwap", init);
   window.addEventListener("resize", init);
 })();
