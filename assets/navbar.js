@@ -132,7 +132,7 @@ function tr(en, id, ar) {
       }
     });
   }
-});
+})();
 
 
 // Dark Mode Controller (DESIGN.md: direct SVG swap, no HTMX request)

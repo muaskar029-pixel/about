@@ -172,6 +172,7 @@ p { margin: 0; text-wrap: balance; }
   padding: clamp(4.5rem, 10vw, 8rem) 0;
   border-top: 1px solid var(--line);
 }
+.ab-section:first-child { border-top: 0; }
 
 .ab-section h2 {
   font-size: clamp(2rem, 4.5vw, 3.25rem);
@@ -180,7 +181,7 @@ p { margin: 0; text-wrap: balance; }
 
 .ab-section h2 span { color: var(--accent); }
 
-.ab-section h2.eyebrow { font: 500 0.8125rem/1 var(--font-mono); letter-spacing: 0.04em; max-width: none; }
+.ab-section :is(h1, h2).eyebrow { font: 500 0.8125rem/1 var(--font-mono); letter-spacing: 0.04em; max-width: none; }
 
 .split {
   display: grid;
@@ -486,10 +487,10 @@ p { margin: 0; text-wrap: balance; }
 
 .timeline > li[hidden] { display: none; }
 
-/* Filter bar: sticks under the 64px header */
+/* Filter bar: sticks flush under the sticky site header */
 .tl-filter {
   position: sticky;
-  top: 65px;
+  top: 56px;
   z-index: 5;
   display: flex;
   flex-wrap: wrap;
@@ -531,7 +532,7 @@ p { margin: 0; text-wrap: balance; }
 
 .tl-count { margin-inline-start: auto; font: 500 0.875rem/1 var(--font-mono); color: var(--muted); }
 
-/* phone-only controls (shown in the 600px query below) */
+/* phone/tablet-only controls (shown in the 767px query below) */
 .tl-filter-toggle, .tl-apply { display: none; }
 .tl-filter .tl-filter-toggle { align-items: center; gap: 0.5rem; }
 .tl-filter .tl-filter-toggle.is-active { border-color: var(--red); color: var(--red); }
@@ -550,9 +551,9 @@ p { margin: 0; text-wrap: balance; }
 
 /* Wide screens (with JS): two interlocking columns around a centre line.
    The script measures every card and sets its top and the list height (see pack() in history.html);
-   keep this breakpoint in sync with the matchMedia there. */
-@media (min-width: 901px) {
-  .timeline.is-split { display: block; max-width: none; }
+   keep this breakpoint in sync with the matchMedia('(min-width: 1024px)') there. */
+@media (min-width: 1024px) {
+  .timeline.is-split { --tl-col-gap: clamp(3rem, 4.5vw, 5rem); display: block; max-width: none; }
   .timeline.is-split::before { inset-inline-start: 50%; margin-inline-start: -1px; }
   .timeline.is-split > li { position: absolute; width: calc((100% - var(--tl-col-gap)) / 2); padding-inline-start: 0; }
   .timeline.is-split > li[data-side="left"] { inset-inline-start: 0; }
@@ -912,7 +913,7 @@ p { margin: 0; text-wrap: balance; }
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .split { grid-template-columns: 1fr; }
   .principles { grid-template-columns: 1fr; }
   .mission li { grid-template-columns: 3rem 1fr; }
@@ -921,23 +922,35 @@ p { margin: 0; text-wrap: balance; }
   .vm-side { position: static; }
   .vm-missions { grid-template-columns: 1fr; }
   .vm-missions li, .vm-missions li:nth-child(even) { padding: 1.75rem 0; border-inline-start: 0; }
+  .timeline { --tl-card-min: 0px; --tl-gap: 3rem; --tl-title: 1.5rem; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .ab-nav a:not(.keep) { display: none; }
   .stats { grid-template-columns: 1fr; }
-  .timeline { --tl-pad: 1.25rem; --tl-title: 1.25rem; }
+  .timeline { --tl-pad: 1.25rem; --tl-title: 1.25rem; --tl-gap: 2.25rem; --tl-card-min: 0px; }
   .timeline > li { padding-inline-start: 1.75rem; }
+  .tl-head { gap: 0.375rem 0.625rem; }
+  .tl-pill { white-space: normal; line-height: 1.4; padding: 0.25rem 0.7rem; }
+  .member-tip { max-width: min(16rem, calc(100vw - 2rem)); white-space: normal; }
   /* filter: "Filter" button + count; open = three equal selects, then reset + apply */
   /* not sticky here, it would cover a fifth of a phone screen */
-  .tl-filter { position: static; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem 0.5rem; }
+  .tl-filter { position: static; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 0.5rem; margin-inline: 0; padding-inline: 0; }
   .tl-filter .tl-filter-toggle { display: inline-flex; grid-area: 1 / 1; justify-self: start; }
   .tl-count { grid-area: 1 / 2 / auto / -1; justify-self: end; margin-inline-start: 0; }
   .tl-filter:not(.is-open) > :is(label, [type="reset"], .tl-apply) { display: none; }
   .tl-filter label { flex-direction: column; align-items: stretch; }
   .tl-filter select { min-width: 0; width: 100%; }
+  .tl-filter select, .tl-filter button { min-height: 2.5rem; padding: 0 0.75rem; font-size: 0.875rem; }
   .tl-filter .tl-apply { display: block; grid-column: span 2; }
   .stat, .stat + .stat { padding: 1.5rem 0; border-inline-start: 0; border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 575px) {
+  .tl-filter { grid-template-columns: 1fr 1fr; }
+  .tl-filter label { grid-column: 1 / -1; }
+  .tl-filter [type="reset"] { grid-column: 1; }
+  .tl-filter .tl-apply { grid-column: 2; }
 }
 
 /* right-to-left pages: the team arrows point the way the track moves */
