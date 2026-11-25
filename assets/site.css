@@ -211,7 +211,7 @@ a:hover {
 .skip-link {
   position: absolute;
   top: -4rem;
-  left: 1rem;
+  inset-inline-start: 1rem;
   z-index: 100;
   padding: 0.5rem 1rem;
   background: var(--red-900);
@@ -259,7 +259,7 @@ section[data-label]::after {
   content: "(" counter(section-counter, decimal-leading-zero) ")";
   position: absolute;
   top: var(--pad-y);
-  right: var(--pad-x);
+  inset-inline-end: var(--pad-x);
   font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 600;
@@ -471,7 +471,7 @@ a.btn, button.btn, .copy-btn {
   justify-content: space-between;
   gap: 1.5rem;
   min-height: 60px;
-  padding: 0.45rem 0.55rem 0.45rem 2rem;
+  padding-block: 0.45rem 0.45rem; padding-inline: 2rem 0.55rem;
   border-radius: 9999px;
   background: linear-gradient(135deg, var(--red-600) 0%, var(--red-700) 100%);
   color: var(--white);
@@ -609,8 +609,8 @@ a.btn, button.btn, .copy-btn {
 
   .hero-split-right {
     grid-column: 6 / 13;
-    border-left: 1px solid var(--red-600);
-    padding-left: clamp(1.5rem, 2.5vw, 2.5rem);
+    border-inline-start: 1px solid var(--red-600);
+    padding-inline-start: clamp(1.5rem, 2.5vw, 2.5rem);
   }
 }
 
@@ -876,7 +876,7 @@ main #manifesto .swiss-ledger article.ledger-item,
   background: transparent;
   box-shadow: none;
   border: 0;
-  padding: 1.75rem 1.5rem 1.75rem 0;
+  padding-block: 1.75rem 1.75rem; padding-inline: 0 1.5rem;
   position: relative;
 }
 
@@ -890,9 +890,9 @@ main #manifesto .swiss-ledger article.ledger-item,
 @media (min-width: 42rem) {
   main #manifesto .swiss-ledger article.ledger-item:nth-child(2n),
   .ledger-item:nth-child(2n) {
-    border-left: 1px solid var(--line);
-    padding-left: 1.75rem;
-    padding-right: 0;
+    border-inline-start: 1px solid var(--line);
+    padding-inline-start: 1.75rem;
+    padding-inline-end: 0;
   }
   main #manifesto .swiss-ledger article.ledger-item:nth-child(n+3),
   .ledger-item:nth-child(n+3) {
@@ -930,13 +930,13 @@ main #manifesto .swiss-ledger article.ledger-item,
   line-height: 1.6;
   color: var(--muted);
   margin: 0;
-  text-align: left;
+  text-align: start;
 }
 
 .manifesto-quote {
   margin-top: 2.5rem;
   background: var(--surface-subtle);
-  border-left: 4px solid var(--red-600);
+  border-inline-start: 4px solid var(--red-600);
   padding: 1.5rem 2rem;
   border-radius: 0 16px 16px 0;
 }
@@ -983,7 +983,7 @@ main #manifesto .swiss-ledger article.ledger-item,
 
 .fitur-head h2 {
   margin: 0;
-  text-align: left;
+  text-align: start;
   font-size: clamp(2rem, 3.8vw, 2.75rem);
   font-weight: 900;
   line-height: 1.15;
@@ -1201,7 +1201,7 @@ main #fitur .fitur-matrix article.fitur-card {
   border-radius: 99px;
   position: absolute;
   top: 1.5rem;
-  right: 1.5rem;
+  inset-inline-end: 1.5rem;
   line-height: 1.2;
 }
 
@@ -1444,7 +1444,7 @@ main #fitur .fitur-matrix article.fitur-card {
 }
 
 .section-center {
-  text-align: left;
+  text-align: start;
   font-family: var(--font-heading);
   font-size: clamp(2.25rem, 4vw, 3.25rem);
   font-weight: 900;
@@ -1643,7 +1643,7 @@ main #fitur .fitur-matrix article.fitur-card {
   content: "STABLE // x86_64";
   position: absolute;
   top: clamp(1.75rem, 4vw, 2.75rem);
-  right: clamp(1.75rem, 4vw, 2.75rem);
+  inset-inline-end: clamp(1.75rem, 4vw, 2.75rem);
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -1768,7 +1768,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-weight: 700;
   color: var(--muted);
   text-transform: uppercase;
-  text-align: left;
+  text-align: start;
   letter-spacing: 0.08em;
   margin-bottom: 0.75rem;
 }
@@ -1784,7 +1784,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-family: var(--font-mono);
   color: var(--muted);
   font-weight: 500;
-  text-align: left;
+  text-align: start;
   width: 40%;
 }
 
@@ -1792,7 +1792,7 @@ main #fitur .fitur-matrix article.fitur-card {
   font-family: var(--font-mono);
   color: var(--text-heading);
   font-weight: 700;
-  text-align: right;
+  text-align: end;
 }
 
 .unduh-sig-note {
@@ -1813,7 +1813,7 @@ main #fitur .fitur-matrix article.fitur-card {
 
 .code-box pre {
   margin: 0;
-  padding-right: 4.5rem;
+  padding-inline-end: 4.5rem;
 }
 
 .code-box code {
@@ -1824,7 +1824,7 @@ main #fitur .fitur-matrix article.fitur-card {
 .copy-btn {
   position: absolute;
   top: 0.65rem;
-  right: 0.65rem;
+  inset-inline-end: 0.65rem;
   height: 32px;
   padding-inline: 0.85rem;
   font-size: 12px;
@@ -1855,7 +1855,7 @@ main #fitur .fitur-matrix article.fitur-card {
 
 .verify-steps li {
   position: relative;
-  padding-left: 2rem;
+  padding-inline-start: 2rem;
   font-size: 14.5px;
   line-height: 1.6;
   color: var(--muted);
@@ -1866,7 +1866,7 @@ main #fitur .fitur-matrix article.fitur-card {
   counter-increment: verify-counter;
   content: counter(verify-counter) ".";
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   font-family: var(--font-mono);
   font-weight: 700;
   color: var(--red-600);
@@ -2053,7 +2053,7 @@ nav.footer-col {
    Home Page Navbar & Responsive Drawer
    ========================================================================== */
 .navbar {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 .nav-links {
@@ -2081,8 +2081,8 @@ nav.navbar li :where(a, [role="link"]) {
 .dropdown-content {
   position: absolute;
   top: calc(100% + 18px);
-  right: 0;
-  left: auto;
+  inset-inline-end: 0;
+  inset-inline-start: auto;
   transform: translateY(-6px);
   background: var(--surface-page);
   min-width: 250px;
@@ -2099,8 +2099,8 @@ nav.navbar li :where(a, [role="link"]) {
   content: '';
   position: absolute;
   top: -22px;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   height: 22px;
   background: transparent;
 }
@@ -2131,7 +2131,7 @@ nav.navbar li :where(a, [role="link"]) {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
-  text-align: left;
+  text-align: start;
   border: none;
   border-bottom: 1px solid #F0F0F0;
   border-radius: 0;
@@ -2165,14 +2165,14 @@ nav.navbar li :where(a, [role="link"]) {
 .menu-arrow {
   position: absolute;
   top: 100%;
-  right: 20px;
-  left: auto;
+  inset-inline-end: 20px;
+  inset-inline-start: auto;
   transform: none;
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid rgba(14, 3, 71, 0.14);
+  border-inline-start: 10px solid transparent;
+  border-inline-end: 10px solid transparent;
+  border-bottom: 10px solid #A3A3A3;
   z-index: 1000;
   display: none;
   margin-top: 8px;
@@ -2221,7 +2221,7 @@ nav.navbar li :where(a, [role="link"]) {
   height: 38px;
   padding: 0;
   margin: 0;
-  margin-left: auto;
+  margin-inline-start: auto;
   background: transparent;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -2268,7 +2268,7 @@ nav.navbar li :where(a, [role="link"]) {
   }
 
   .header-menu .navbar {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }
 
@@ -2290,7 +2290,7 @@ nav.navbar li :where(a, [role="link"]) {
     justify-content: flex-start;
     width: 100%;
     height: calc(100dvh - 58px);
-    margin-left: 0;
+    margin-inline-start: 0;
     padding: 0.75rem var(--pad-x) 2rem;
     background: var(--surface-page);
     border-top: 1px solid var(--line);
@@ -2405,14 +2405,14 @@ button.btn-lang:hover {
 
 @media (max-width: 767px) {
   button.btn-lang {
-    margin-left: auto;
+    margin-inline-start: auto;
     padding: 0.45rem 0.75rem;
     position: relative;
     z-index: 1002;
   }
 
   .nav-toggle {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }
 
@@ -2431,7 +2431,7 @@ button.btn-theme {
   height: 36px;
   min-height: 36px;
   margin: 0;
-  margin-left: auto;
+  margin-inline-start: auto;
   padding: 0;
   border-radius: 999px;
   border: 1.5px solid rgba(14, 3, 71, 0.18);
@@ -2442,13 +2442,9 @@ button.btn-theme {
   transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease, transform 140ms ease;
 }
 
-button.btn-theme + button.btn-lang {
-  margin-left: 0;
-}
-
 @media (min-width: 768px) {
   button.btn-theme {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }
 
@@ -2732,3 +2728,91 @@ body > footer.site-footer {
 
 /* about: sections carry the container, so --pad-x is the DESIGN.md container gutter */
 :root { --pad-x: max(1rem, calc((100% - var(--container-max)) / 2)); }
+
+/* ==========================================================================
+   Language menu (EN / ID / AR), the last item in the header. Keep this block
+   identical in about, latest, learns and events.
+   ========================================================================== */
+.lang-menu {
+  position: relative;
+  flex-shrink: 0;
+}
+.lang-menu button.btn-lang {
+  margin: 0;
+  gap: 0.375rem;
+}
+.lang-menu button.btn-lang svg {
+  transition: transform 0.2s ease;
+}
+.lang-menu button.btn-lang[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+.lang-menu .lang-list {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  inset-inline-end: 0;
+  z-index: 1003;
+  display: block;
+  min-width: 11rem;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(14, 3, 71, 0.12);
+}
+.lang-menu .lang-list[hidden] {
+  display: none;
+}
+.lang-menu .lang-list li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lang-menu .lang-list a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.55rem 0.75rem;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--text-primary);
+  text-decoration: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: start;
+  cursor: pointer;
+}
+.lang-menu .lang-list a:hover,
+.lang-menu .lang-list a:focus-visible {
+  background: var(--surface-subtle);
+}
+.lang-menu .lang-list a[aria-current="true"] {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+.lang-menu .lang-list a[aria-current="true"]::after {
+  content: "\2713" / "";
+  float: inline-end;
+  color: var(--text-accent);
+}
+@media (max-width: 767px) {
+  .lang-menu {
+    z-index: 1002;
+  }
+}
+/* Right-to-left pages (ar/): arrow icons point along the reading direction. */
+[dir="rtl"] :is(.btn-arrow, .btn-arrow-red, .button--arrow)::after {
+  transform: scaleX(-1);
+}
+[dir="rtl"] :is(.btn-arrow, .btn-arrow-red):hover::after {
+  transform: translateX(-10px) scaleX(-1);
+}
+/* Arabic is not letter-spaced: tracking only stretches the gaps between words. */
+[dir="rtl"] * {
+  letter-spacing: normal !important;
+}

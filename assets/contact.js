@@ -1,3 +1,9 @@
+// Text this script writes into the page, in the page's language (<html lang>).
+function tr(en, id, ar) {
+  var lang = document.documentElement.lang;
+  return lang === "id" ? id : lang === "ar" ? ar : en;
+}
+
 // untuk ngirim data ke sheet
 function switchTab(category, btnElement) {
       document.getElementById('category').value = category;
@@ -54,17 +60,17 @@ function switchTab(category, btnElement) {
 
         responseBox.innerHTML = `
           <div style="text-align: center; padding: 2rem 0;">
-            <h3 style="color: #00A86B; font-family: var(--font-heading);">Transmission Successful!</h3>
-            <p style="color: var(--muted); font-size: 15px;">Your request has been securely delivered to the Radova Linux team. We will respond shortly.</p>
-            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">Send Another Message</button>
+            <h3 style="color: #00A86B; font-family: var(--font-heading);">${tr("Transmission Successful!", "Pesan Terkirim!", "تم الإرسال بنجاح!")}</h3>
+            <p style="color: var(--muted); font-size: 15px;">${tr("Your request has been securely delivered to the Radova Linux team. We will respond shortly.", "Permintaan Anda sudah terkirim dengan aman ke tim Radova Linux. Kami akan segera membalas.", "وصل طلبك بأمان إلى فريق Radova Linux. سنرد عليك قريبًا.")}</p>
+            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">${tr("Send Another Message", "Kirim Pesan Lain", "إرسال رسالة أخرى")}</button>
           </div>
         `;
       } catch (error) {
         responseBox.innerHTML = `
           <div style="text-align: center; padding: 2rem 0; color: var(--red-600);">
-            <h3>Transmission Failed</h3>
+            <h3>${tr("Transmission Failed", "Pengiriman Gagal", "فشل الإرسال")}</h3>
             <p>${error.toString()}</p>
-            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">Try Again</button>
+            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">${tr("Try Again", "Coba Lagi", "حاول مرة أخرى")}</button>
           </div>
         `;
       }
