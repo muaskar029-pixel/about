@@ -1,4 +1,10 @@
-(() => {
+// Text this script writes into the page, in the page's language (<html lang>).
+function tr(en, id, ar) {
+  var lang = document.documentElement.lang;
+  return lang === "id" ? id : lang === "ar" ? ar : en;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
     const navBtn = document.getElementById('about-menu-btn');
     const dropdownContainer = document.querySelector('.dropdown');
     const backBtn = document.querySelector('.d-content-back');
@@ -64,7 +70,7 @@
 
     const setMenuState = (open) => {
         toggleBtn.setAttribute("aria-expanded", String(open));
-        toggleBtn.setAttribute("aria-label", open ? "Tutup menu navigasi" : "Buka menu navigasi");
+        toggleBtn.setAttribute("aria-label", open ? tr("Close navigation menu", "Tutup menu navigasi", "إغلاق قائمة التنقل") : tr("Open navigation menu", "Buka menu navigasi", "فتح قائمة التنقل"));
         primaryNav.classList.toggle("is-open", open);
         document.body.style.overflow = open ? "hidden" : "";
     };
@@ -90,79 +96,42 @@
     });
 });
 
-// language switcher (EN <-> ID)
-(() => {
-    const langBtn = document.getElementById("lang-toggle");
-    if (!langBtn) return;
-
-    const LANG_KEY = "radova-lang";
-    const ID_TEXT = {
-        "skip": "Langsung ke konten",
-        "nav.packages": "Paket",
-        "nav.wiki": "Wiki",
-        "nav.learning": "Belajar",
-        "nav.events": "Acara",
-        "nav.latest": "Terbaru",
-        "nav.about": "Tentang",
-        "nav.history": "Sejarah",
-        "nav.contact": "Kontak",
-        "nav.back": "Kembali",
-        "about.eyebrow": "Tentang Radova",
-        "about.title1": "Di mana ada shell,",
-        "about.title2": "di situ ada jalan",
-        "history.eyebrow": "Sejarah",
-        "history.title1": "Dari satu ide",
-        "history.title2": "menjadi satu sistem.",
-        "history.sub": "Bagaimana Radova Linux tumbuh dari proyek pribadi di tahun 2019 menjadi satu sistem di tahun 2026.",
-        "contact.eyebrow": "Hubungi Kami",
-        "footer.col1": "Tentang Radova",
-        "footer.col2": "Sumber Daya",
-        "footer.col3": "Pilar Utama",
-        "footer.col4": "Bantuan & Spesifikasi",
-        "footer.download": "Unduh ISO",
-        "footer.specs": "Kebutuhan Sistem",
-        "footer.security": "Info Keamanan",
-        "footer.copy": "© 2026 yuros.org · Dirilis di bawah Lisensi MIT",
-        "footer.top": "Ke atas ↑"
+document.addEventListener("DOMContentLoaded", function () {
+  // Language menu: the list holds plain links to this page in each language; this only opens and closes it.
+  var langBtn = document.getElementById("lang-toggle");
+  var langList = document.getElementById("lang-list");
+  if (langBtn && langList) {
+    var setLangOpen = function (open) {
+      langBtn.setAttribute("aria-expanded", String(open));
+      langList.hidden = !open;
     };
-
-    const nodes = document.querySelectorAll("[data-i18n], [data-i18n-prefix]");
-    const enList = Array.from(nodes, (node) =>
-        node.hasAttribute("data-i18n")
-            ? node.textContent
-            : (node.firstChild ? node.firstChild.nodeValue : "")
-    );
-
-    const applyLang = (lang) => {
-        nodes.forEach((el, i) => {
-            if (el.hasAttribute("data-i18n")) {
-                const key = el.getAttribute("data-i18n");
-                el.textContent = lang === "id" && ID_TEXT[key] != null ? ID_TEXT[key] : enList[i];
-            } else if (el.firstChild) {
-                const pkey = el.getAttribute("data-i18n-prefix");
-                el.firstChild.nodeValue = lang === "id" && ID_TEXT[pkey] != null ? ID_TEXT[pkey] + " " : enList[i];
-            }
-        });
-        document.documentElement.lang = lang;
-        langBtn.textContent = lang.toUpperCase();
-        langBtn.setAttribute("aria-label", lang === "id" ? "ID: switch language to English" : "EN: switch language to Indonesian");
-    };
-
-    let currentLang = "en";
-    try {
-        const saved = localStorage.getItem(LANG_KEY);
-        if (saved === "id" || saved === "en") currentLang = saved;
-    } catch (_) {}
-
-    if (currentLang !== "en") applyLang(currentLang);
-
-    langBtn.addEventListener("click", () => {
-        currentLang = currentLang === "en" ? "id" : "en";
-        applyLang(currentLang);
-        try {
-            localStorage.setItem(LANG_KEY, currentLang);
-        } catch (_) {}
+    langBtn.addEventListener("click", function () {
+      setLangOpen(langList.hidden);
     });
+    document.addEventListener("click", function (e) {
+      if (!langList.hidden && !langBtn.parentNode.contains(e.target)) setLangOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !langList.hidden) {
+        setLangOpen(false);
+        langBtn.focus();
+      }
+    });
+    langList.querySelectorAll("a").forEach(function (a) { a.href = a.href; });
+    document.addEventListener("htmx:afterSettle", function (e) {
+      var xhr = e.detail && e.detail.xhr;
+      if (!xhr || !xhr.responseText) return;
+      var doc = new DOMParser().parseFromString(xhr.responseText, "text/html");
+      var next = doc.getElementById("lang-list");
+      if (next) {
+        var base = xhr.responseURL || location.href;
+        next.querySelectorAll("a").forEach(function (a) {
+          a.href = new URL(a.getAttribute("href"), base).href;
+        });
+        langList.innerHTML = next.innerHTML;
+      }
+    });
+  }
 });
 
 
@@ -180,8 +149,8 @@
     var btn = document.getElementById("theme-toggle");
     if (btn) {
       btn.setAttribute("aria-pressed", String(isDark));
-      btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-      btn.setAttribute("title", isDark ? "Switch to light mode" : "Switch to dark mode");
+      btn.setAttribute("aria-label", isDark ? tr("Switch to light mode", "Beralih ke mode terang", "التبديل إلى الوضع الفاتح") : tr("Switch to dark mode", "Beralih ke mode gelap", "التبديل إلى الوضع الداكن"));
+      btn.setAttribute("title", isDark ? tr("Switch to light mode", "Beralih ke mode terang", "التبديل إلى الوضع الفاتح") : tr("Switch to dark mode", "Beralih ke mode gelap", "التبديل إلى الوضع الداكن"));
       btn.innerHTML = isDark ? SUN_SVG : MOON_SVG;
     }
   }
@@ -216,8 +185,9 @@
 
   function sync(track) {
     var max = track.scrollWidth - track.clientWidth - 1;
+    var pos = Math.abs(track.scrollLeft); // right-to-left pages scroll with a negative scrollLeft
     document.querySelectorAll('[aria-controls="' + track.id + '"]').forEach(function (btn) {
-      var atEnd = btn.classList.contains("team-next") ? track.scrollLeft >= max : track.scrollLeft <= 1;
+      var atEnd = btn.classList.contains("team-next") ? pos >= max : pos <= 1;
       btn.setAttribute("aria-disabled", String(atEnd));
     });
   }
@@ -233,7 +203,7 @@
     var track = document.getElementById(btn.getAttribute("aria-controls"));
     if (!track) return;
     var page = track.clientWidth + (parseFloat(getComputedStyle(track).columnGap) || 0);
-    var dir = btn.classList.contains("team-next") ? 1 : -1;
+    var dir = (btn.classList.contains("team-next") ? 1 : -1) * (getComputedStyle(track).direction === "rtl" ? -1 : 1);
     track.scrollBy({ left: dir * page, behavior: reduceMotion.matches ? "auto" : "smooth" });
   });
 

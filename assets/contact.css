@@ -77,3 +77,9 @@ textarea.form-input { min-height: 9rem; }
 .htmx-request.htmx-indicator {
   display: block;
 }
+
+/* Right-to-left pages: handles, e-mail and web addresses read left to right inside the Arabic layout. */
+[dir="rtl"] .ledger-item p {
+  unicode-bidi: plaintext;
+  text-align: right;
+}
