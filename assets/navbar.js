@@ -4,7 +4,7 @@ function tr(en, id, ar) {
   return lang === "id" ? id : lang === "ar" ? ar : en;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     const navBtn = document.getElementById('about-menu-btn');
     const dropdownContainer = document.querySelector('.dropdown');
     const backBtn = document.querySelector('.d-content-back');
@@ -94,9 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", () => {
         if (window.innerWidth >= 768) setMenuState(false);
     });
-});
+})();
 
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
   // Language menu: the list holds plain links to this page in each language; this only opens and closes it.
   var langBtn = document.getElementById("lang-toggle");
   var langList = document.getElementById("lang-list");

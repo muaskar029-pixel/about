@@ -76,7 +76,7 @@
   box-sizing: border-box;
 }
 
-html {
+html { scroll-padding-block-start: 5.5rem;
   max-width: 100%;
   overflow-x: clip;
   background-color: var(--surface-page);
@@ -2172,7 +2172,7 @@ nav.navbar li :where(a, [role="link"]) {
   height: 0;
   border-inline-start: 10px solid transparent;
   border-inline-end: 10px solid transparent;
-  border-bottom: 10px solid #A3A3A3;
+  border-bottom: 10px solid rgba(14, 3, 71, 0.14);
   z-index: 1000;
   display: none;
   margin-top: 8px;
