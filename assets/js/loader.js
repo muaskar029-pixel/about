@@ -20,7 +20,7 @@
   function load() {
     if (loaded) return;
     loaded = true;
-    add("link", { rel: "stylesheet", href: new URL("../fonts.css", base).href });
+    // ponytail: fonts.css already loaded non-blocking in <head>
     function injectHtmx() { add("script", { src: new URL("../htmx.min.js", base).href }); }
     if (document.readyState === "complete") injectHtmx();
     else addEventListener("load", injectHtmx, { once: true });
