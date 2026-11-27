@@ -8,8 +8,12 @@ function tr(en, id, ar) {
 function switchTab(category, btnElement) {
       document.getElementById('category').value = category;
 
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
       btnElement.classList.add('active');
+      btnElement.setAttribute('aria-selected', 'true');
 
       document.querySelectorAll('.tab-content').forEach(content => {
         content.classList.remove('active');
