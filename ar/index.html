@@ -256,10 +256,9 @@
     </div>
   </footer>
 
-    <script src="../assets/navbar.js" defer></script>
+    <script src="../assets/js/loader.js" defer></script>
     <!-- DESIGN.md §5: fonts (system font until then) and htmx (only the About dropdown uses it) are not needed
          for first paint, so load them on the first interaction, like latest/assets/js/loader.js -->
-    <script>(function(d,w){var E=["pointerdown","keydown","touchstart","scroll","wheel","mouseover","focusin"],o={passive:true,capture:true},done=0;function add(t,a){var e=d.createElement(t);for(var k in a)e[k]=a[k];(t==="link"?d.head:d.body).appendChild(e)}function load(){if(done)return;done=1;E.forEach(function(e){w.removeEventListener(e,load,o)});add("link",{rel:"stylesheet",href:"../assets/fonts.css"});function hx(){add("script",{src:"../assets/htmx.min.js"})}/* htmx only starts before DOMContentLoaded or once readyState is "complete" */if(d.readyState==="complete")hx();else w.addEventListener("load",hx,{once:true})}E.forEach(function(e){w.addEventListener(e,load,o)})})(document,window)</script>
 
 </body>
 </html>
