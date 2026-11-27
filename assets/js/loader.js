@@ -1,4 +1,4 @@
-// Loads fonts.css, js/about.bundle.js, and htmx.min.js on first interaction.
+// Loads fonts.css, js/about.bundle.js?v=2, and htmx.min.js on first interaction.
 (function () {
   "use strict";
   var base = document.currentScript.src;
@@ -25,7 +25,7 @@
     if (document.readyState === "complete") injectHtmx();
     else addEventListener("load", injectHtmx, { once: true });
     add("script", {
-      src: new URL("about.bundle.js", base).href,
+      src: new URL("about.bundle.js?v=2", base).href,
       onload: function () {
         ready = true;
         document.removeEventListener("click", onClick, true);
